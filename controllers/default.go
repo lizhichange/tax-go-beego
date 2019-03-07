@@ -66,40 +66,27 @@ func (c *MainController) Calc() {
 	var amount = c.Ctx.Input.Param(":amount")
 	//获取城市社保金额比例配置信息
 	i, _ := models.GetInsuranceByCode(provinceCode, cityCode)
+	in := i[0]
 	var afterAmount float64
-	var amountFloat float64
-	var medical float64
 
-	var unemployment float64
-	var pension int64
-	var provident int64
-	var socialAmount float64
-	var in = models.Insurance{}
-	for _, v := range i {
-		of := reflect.ValueOf(v)
-		in = of.Interface().(models.Insurance)
-		//转换float
-		amountFloat, _ = strconv.ParseFloat(amount, 64)
-		//医疗保险
-		medical = amountFloat * in.Medical / nu
-		//失业保险
-		unemployment = amountFloat * in.Unemployment / nu
+	//转换float
+	var amountFloat, _ = strconv.ParseFloat(amount, 64)
+	//医疗保险
+	var medical = amountFloat * in.Medical / nu
+	//失业保险
+	var unemployment = amountFloat * in.Unemployment / nu
 
-		//转换成int64
-		amountInt, _ := strconv.ParseInt(amount, 10, 64)
-		//养老保险金：
-		pension = amountInt * in.Pension / nu
-		//公积金
-		provident = amountInt * in.Provident / nu
+	//转换成int64
+	amountInt, _ := strconv.ParseInt(amount, 10, 64)
+	//养老保险金：
+	var pension = amountInt * in.Pension / nu
+	//公积金
+	var provident = amountInt * in.Provident / nu
 
-		//社保金额&公积金=医疗保险+失业保险+养老保险金+公积金
-		socialAmount = medical + unemployment + float64(pension) + float64(provident)
+	//社保金额&公积金=医疗保险+失业保险+养老保险金+公积金
+	var socialAmount = medical + unemployment + float64(pension) + float64(provident)
 
-		//税后工资 = 税前工资 - 社保金额 - 减去公积金-减去免征额-专项扣除
-		afterAmount = float64(amountInt) - socialAmount - exemption - deduction
-		fmt.Println(pension, medical, unemployment, provident, socialAmount, afterAmount)
-		break
-	}
+	//税后工资 = 税前工资 - 社保金额 - 减去公积金-减去免征额-专项扣除fmt.Println(pension, medical, unemployment, provident, socialAmount, afterAmount)
 
 	ml, _ := models.GetAllMonthlyInfo(nil, nil, nil, nil, 0, 0)
 	var item models.MonthlyInfo
