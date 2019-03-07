@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
-	"mygomvcproject/controllers"
+	"tax-go-beego/controllers"
 )
 
 func init() {

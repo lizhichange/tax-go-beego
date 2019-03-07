@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"mygomvcproject/models"
+	"tax-go-beego/models"
 )
 
 type CityController struct {
