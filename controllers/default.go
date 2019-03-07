@@ -3,10 +3,9 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
-	"tax-go-beego/models"
-
 	"reflect"
 	"strconv"
+	"tax-go-beego/models"
 )
 
 type MainController struct {
