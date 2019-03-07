@@ -16,7 +16,7 @@ func InitCityController() {
 
 func (c *CityController) GetCityByProvinceCode() {
 	var param = c.Ctx.Input.Param(":provinceCode") //models.GetCityByProvinceCode()
-	list, _ := models.GetCityByProvinceCode(param)
+	list, _ := models.GetCityByProvinceCode(param, "1")
 	c.Data["json"] = list
 	c.ServeJSON()
 }

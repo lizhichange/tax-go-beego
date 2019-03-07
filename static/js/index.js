@@ -2,11 +2,11 @@ $(function () {
 
     let click = $("#button").click(function (e) {
         const preTaxIncome = $('#preTaxIncome').val();
-        const provinceCode = $('#select2_group').val();
+        const cityCode = $('#select2_group').val();
 
         $.ajax({
             type: "GET",
-            url: "calc/" + provinceCode + "/" + provinceCode + "/" + preTaxIncome,
+            url: "calc/" + cityCode + "/" + preTaxIncome,
             data: {username: $("#username").val(), content: $("#content").val()},
             dataType: "json",
             success: function (data) {
@@ -40,7 +40,7 @@ $(function () {
                 init_chart_doughnut(data.ProvidentRate, data.UnemploymentRate, data.MedicalRate, data.PensionRate, data.AfterAmountRate,
 
 
-                    data.PersonalIncomeTaxRate)
+                    data.PersonalIncomeTaxRate);
 
             }
         });

@@ -43,13 +43,26 @@ func GetCityById(id int64) (v *City, err error) {
 	return nil, err
 }
 
-func GetCityByProvinceCode(provinceCode string) (c []City, err error) {
+func GetCityByCityCode(cityCode string) (c []City, err error) {
 	var o = orm.NewOrm()
 	num, err := o.Raw("SELECT  "+
 		"	`id` , `code` , "+
 		"`name` , `province_code` ,`hot` "+
-		"FROM pos_city WHERE province_code =?  ",
-		provinceCode).QueryRows(&c)
+		"FROM pos_city WHERE code =?  ",
+		cityCode).QueryRows(&c)
+	if err == nil && num > 0 {
+
+	}
+	return c, nil
+}
+
+func GetCityByProvinceCode(provinceCode string, hot string) (c []City, err error) {
+	var o = orm.NewOrm()
+	num, err := o.Raw("SELECT  "+
+		"	`id` , `code` , "+
+		"`name` , `province_code` ,`hot` "+
+		"FROM pos_city WHERE province_code =? and Hot   =?  ",
+		provinceCode, hot).QueryRows(&c)
 	if err == nil && num > 0 {
 
 	}

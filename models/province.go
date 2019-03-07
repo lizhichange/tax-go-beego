@@ -13,6 +13,7 @@ type Province struct {
 	Id   int64
 	Code string
 	Name string
+	Hot  string
 }
 
 func init() {
@@ -41,9 +42,22 @@ func GetProvinceById(id int64) (v *Province, err error) {
 	return nil, err
 }
 
+func GetProvinceByHot(hot string) (p []Province, err error) {
+	var o = orm.NewOrm()
+	num, err := o.Raw("SELECT  "+
+		"	`id` , `code` , "+
+		"`name` ,`hot` "+
+		"FROM pos_province WHERE  hot   =?  ",
+		hot).QueryRows(&p)
+	if err == nil && num > 0 {
+
+	}
+	return p, nil
+}
+
 // GetAllProvince retrieves all Province matches certain condition. Returns empty list if
 // no records exist
-	func GetAllProvince(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllProvince(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Province))

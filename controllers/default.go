@@ -13,7 +13,7 @@ type MainController struct {
 }
 
 func (c *MainController) Get() {
-	var list, _ = models.GetAllProvince(nil, nil, nil, nil, 0, 0)
+	var list, _ = models.GetProvinceByHot("1")
 	var provinceList []ProvinceVO
 	for _, v := range list {
 		var val = reflect.ValueOf(v)
@@ -25,7 +25,7 @@ func (c *MainController) Get() {
 		p.Name = province.Name
 		p.Code = province.Code
 		//根据省份code 查询城市信息
-		cs, _ := models.GetCityByProvinceCode(province.Code)
+		cs, _ := models.GetCityByProvinceCode(province.Code, "1")
 		p.City = cs
 		provinceList = append(provinceList, p)
 	}
@@ -52,8 +52,16 @@ const deduction = 0
  *计算
  **/
 func (c *MainController) Calc() {
-	var provinceCode = c.Ctx.Input.Param(":provinceCode")
+
 	var cityCode = c.Ctx.Input.Param(":cityCode")
+
+	cs, _ := models.GetCityByCityCode(cityCode)
+	var provinceCode string
+	if cs != nil {
+		city := cs[0]
+		provinceCode = city.ProvinceCode
+	}
+
 	//税前金额
 	var amount = c.Ctx.Input.Param(":amount")
 	//获取城市社保金额比例配置信息
