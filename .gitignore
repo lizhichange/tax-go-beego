@@ -30,6 +30,7 @@ hs_err_pid*
 *.ipr
 *.iml
 *.iws
+workspace.xml
 target
 
 # temp ignore
