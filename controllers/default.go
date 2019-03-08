@@ -1,10 +1,12 @@
 package controllers
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
 	"reflect"
 	"strconv"
+	"tax-go-beego/controllers/param"
 	"tax-go-beego/models"
 )
 
@@ -52,20 +54,19 @@ const deduction = 0
  *计算
  **/
 func (c *MainController) Calc() {
-
-	var cityCode = c.Ctx.Input.Param(":cityCode")
-
-	cs, _ := models.GetCityByCityCode(cityCode)
+	var ob param.CalcParam          //这是一个model，struct类型
+	body := c.Ctx.Input.RequestBody //这是获取到的json二进制数据
+	_ = json.Unmarshal(body, &ob)   //解析二进制json，把结果放进ob中
+	cs, _ := models.GetCityByCityCode(ob.CityCode)
 	var provinceCode string
 	if cs != nil {
 		city := cs[0]
 		provinceCode = city.ProvinceCode
 	}
-
 	//税前金额
-	var amount = c.Ctx.Input.Param(":amount")
+	var amount = ob.PreTaxIncome
 	//获取城市社保金额比例配置信息
-	i, _ := models.GetInsuranceByCode(provinceCode, cityCode)
+	i, _ := models.GetInsuranceByCode(provinceCode, ob.CityCode)
 	in := i[0]
 	var afterAmount float64
 

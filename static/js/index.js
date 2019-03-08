@@ -12,10 +12,15 @@ $(function () {
         const preTaxIncome = $('#preTaxIncome').val();
         const cityCode = $('#select2_group').val();
 
+        const data = JSON.stringify({
+            CityCode: cityCode,
+            PreTaxIncome: preTaxIncome
+        });
+        console.log(data);
         $.ajax({
-            type: "GET",
-            url: "calc/" + cityCode + "/" + preTaxIncome,
-            data: {username: $("#username").val(), content: $("#content").val()},
+            type: "POST",
+            url: "calc",
+            data: data,
             dataType: "json",
             success: function (data) {
                 $('#PersonalIncomeTax').html("￥" + data.PersonalIncomeTax);
@@ -53,6 +58,13 @@ $(function () {
             }
         });
     });
+
+    const initSelect = () => {
+
+        const cityCode = $('#select2_group').val();
+
+        $.ajax({});
+    };
 
     function init_chart_doughnut(
         a,
@@ -119,4 +131,5 @@ $(function () {
 
     }
 
-});
+})
+;

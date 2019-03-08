@@ -9,6 +9,7 @@ import (
 
 func main() {
 	orm.Debug = true
+	beego.BConfig.CopyRequestBody = true
 	beego.BConfig.EnableErrorsShow = true
 	beego.SetStaticPath("/swagger", "swagger")
 	beego.Run()

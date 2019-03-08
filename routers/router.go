@@ -9,7 +9,7 @@ func init() {
 
 	beego.Router("/", &controllers.MainController{})
 
-	beego.Router("/calc/:cityCode/:amount", &controllers.MainController{}, "get:Calc")
+	beego.Router("/calc", &controllers.MainController{}, "post:Calc")
 
 	controllers.InitProvince()
 	controllers.InitCityController()
