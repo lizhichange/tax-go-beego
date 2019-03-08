@@ -1,5 +1,13 @@
 $(function () {
 
+
+    $('#preTaxIncome').bind('input propertychange', function () {
+
+        $('#pensionBase').val($(this).val());
+        $('#providentBase').val($(this).val());
+    });
+
+
     let click = $("#button").click(function (e) {
         const preTaxIncome = $('#preTaxIncome').val();
         const cityCode = $('#select2_group').val();
