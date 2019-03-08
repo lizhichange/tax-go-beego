@@ -28,6 +28,10 @@ $(function () {
                 $('#AfterAmount').html("￥" + data.AfterAmount);
                 $('#AfterAmountRate').html(data.AfterAmountRate + "%");
 
+                $('#spanAfterAmount').html("￥" + data.AfterAmount);
+                $('#styleAfterAmount').attr('style', "width: " + data.AfterAmountRate + "%;");
+
+
                 $('#Pension').html("￥" + data.Pension);
                 $('#PensionRate').html(data.PensionRate + "%");
 
@@ -49,10 +53,19 @@ $(function () {
                 $('#rowDetail').html("￥" + data.Amount + "-" + "￥" + data.SocialAmount + "-" + "￥" + data.Exemption);
 
 
-                init_chart_doughnut(data.ProvidentRate, data.UnemploymentRate, data.MedicalRate, data.PensionRate, data.AfterAmountRate,
+                $('#spanSocialAmount').html("￥" + data.SocialAmount);
 
 
-                    data.PersonalIncomeTaxRate);
+                $('#styleSocialAmount').attr('style', "width: " + data.StyleSocialAmount + "%;");
+
+
+                $('#spanAmount').html("￥" + data.Amount);
+
+                $('#styleAmount').attr('style', "width: 100%;");
+
+
+                init_chart_doughnut(data.ProvidentRate, data.UnemploymentRate, data.MedicalRate, data.PensionRate, data.AfterAmountRate, data.PersonalIncomeTaxRate);
+
 
             }
         });

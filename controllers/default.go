@@ -159,6 +159,7 @@ func (c *MainController) Calc() {
 	//速算扣除数
 	result.QuickDeduction = item.QuickDeduction
 	result.SocialAmount = socialAmount
+	result.StyleSocialAmount = socialAmount / amountFloat * nu
 
 	result.PensionRate = in.Pension           //养老比例率
 	result.MedicalRate = in.Medical           //医疗比例率
@@ -187,11 +188,11 @@ type CalcResult struct {
 	//医疗保险
 	Medical float64
 
-	PensionRate      float64 //养老比例率
-	MedicalRate      float64 //医疗比例率
-	UnemploymentRate float64 //失业比例率
-	ProvidentRate    float64 //公积金比例率
-
+	PensionRate       float64 //养老比例率
+	MedicalRate       float64 //医疗比例率
+	UnemploymentRate  float64 //失业比例率
+	ProvidentRate     float64 //公积金比例率
+	StyleSocialAmount float64
 	//失业保险
 	Unemployment float64
 	// 税前工资
