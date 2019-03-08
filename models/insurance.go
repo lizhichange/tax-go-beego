@@ -19,9 +19,11 @@ type Insurance struct {
 	Provident    float64 //公积金比例
 	CityDesc     string
 
-	PensionUpper   float64 //养老上限
-	PensionLower   float64 //养老下限
-	ProvidentUpper float64 //公积金比例下限
+	PensionUpper float64 //养老上限
+	PensionLower float64 //养老下限
+
+	ProvidentUpper float64 //公积金比例上限
+	ProvidentLower float64 //公积金比例下限
 }
 
 func (i *Insurance) TableName() string {

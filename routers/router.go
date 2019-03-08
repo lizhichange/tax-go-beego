@@ -11,6 +11,8 @@ func init() {
 
 	beego.Router("/calc", &controllers.MainController{}, "post:Calc")
 
+	beego.Router("/getInsuranceByCode/:cityCode", &controllers.MainController{}, "get:GetInsuranceByCode")
+
 	controllers.InitProvince()
 	controllers.InitCityController()
 }

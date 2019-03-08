@@ -3,8 +3,8 @@ $(function () {
 
     $('#preTaxIncome').bind('input propertychange', function () {
 
-        $('#pensionBase').val($(this).val());
-        $('#providentBase').val($(this).val());
+
+        initSelect($(this).val());
     });
 
 
@@ -16,7 +16,6 @@ $(function () {
             CityCode: cityCode,
             PreTaxIncome: preTaxIncome
         });
-        console.log(data);
         $.ajax({
             type: "POST",
             url: "calc",
@@ -59,12 +58,40 @@ $(function () {
         });
     });
 
-    const initSelect = () => {
-
+    function initSelect(a) {
         const cityCode = $('#select2_group').val();
 
-        $.ajax({});
-    };
+        $.ajax({
+            type: "get",
+            url: "getInsuranceByCode/" + cityCode,
+            dataType: "json",
+            success: function (data) {
+                let datum = data[0];
+                console.log(datum.PensionUpper);
+                //如果输入的值大于等于 社保上限
+                if (a >= datum.PensionUpper) {
+                    $('#pensionBase').val(datum.PensionUpper);
+                } else {
+                    if (a > datum.PensionLower) {
+                        $('#pensionBase').val(a);
+                    } else {
+                        $('#pensionBase').val(datum.PensionLower);
+                    }
+                }
+
+                if (a >= datum.ProvidentUpper) {
+                    $('#providentBase').val(datum.ProvidentUpper);
+                } else {
+                    if (a > datum.ProvidentLower) {
+                        $('#providentBase').val(a);
+                    } else {
+                        $('#providentBase').val(datum.ProvidentLower);
+                    }
+                }
+            }
+        });
+    }
+
 
     function init_chart_doughnut(
         a,

@@ -14,6 +14,16 @@ type MainController struct {
 	beego.Controller
 }
 
+func (c *MainController) GetInsuranceByCode() {
+
+	cityCode := c.Ctx.Input.Param(":cityCode")
+	cs, _ := models.GetCityByCityCode(cityCode)
+	city := cs[0]
+	i, _ := models.GetInsuranceByCode(city.ProvinceCode, cityCode)
+	c.Data["json"] = i
+	c.ServeJSON()
+}
+
 func (c *MainController) Get() {
 	var list, _ = models.GetProvinceByHot("1")
 	var provinceList []ProvinceVO
