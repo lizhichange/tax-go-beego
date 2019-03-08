@@ -13,11 +13,15 @@ type Insurance struct {
 	Id           int64
 	ProvinceCode string
 	CityCode     string
-	Pension      int64 //养老比例
+	Pension      float64 //养老比例
 	Medical      float64 //医疗比例
 	Unemployment float64 //失业比例
-	Provident    int64 //公积金比例
+	Provident    float64 //公积金比例
 	CityDesc     string
+
+	PensionUpper   float64 //养老上限
+	PensionLower   float64 //养老下限
+	ProvidentUpper float64 //公积金比例下限
 }
 
 func (i *Insurance) TableName() string {

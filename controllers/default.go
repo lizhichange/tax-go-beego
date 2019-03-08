@@ -72,21 +72,39 @@ func (c *MainController) Calc() {
 	//转换float
 	var amountFloat, _ = strconv.ParseFloat(amount, 64)
 	//医疗保险
-	var medical = amountFloat * in.Medical / nu
+	var medical float64
 	//失业保险
-	var unemployment = amountFloat * in.Unemployment / nu
+	var unemployment float64
 
-	//转换成int64
-	amountInt, _ := strconv.ParseInt(amount, 10, 64)
-	//养老保险金：
-	var pension = amountInt * in.Pension / nu
+	var pension float64
+	//如果税前工资 大于 社保上线 按照社保上线计算
+
+	if amountFloat >= in.PensionUpper {
+		//养老保险金：
+		pension = in.PensionUpper * in.Pension / nu
+		medical = in.PensionUpper * in.Medical / nu
+		unemployment = in.PensionUpper * in.Unemployment / nu
+	} else {
+		pension = amountFloat * in.Pension / nu
+		medical = amountFloat * in.Medical / nu
+		unemployment = amountFloat * in.Unemployment / nu
+	}
 	//公积金
-	var provident = amountInt * in.Provident / nu
+	var provident float64
+	if amountFloat >= in.ProvidentUpper {
+		//公积金
+		provident = in.ProvidentUpper * in.Provident / nu
+	} else {
+		provident = amountFloat * in.Provident / nu
+	}
 
 	//社保金额&公积金=医疗保险+失业保险+养老保险金+公积金
-	var socialAmount = medical + unemployment + float64(pension) + float64(provident)
+	var socialAmount = medical + unemployment + pension + provident
 
-	//税后工资 = 税前工资 - 社保金额 - 减去公积金-减去免征额-专项扣除fmt.Println(pension, medical, unemployment, provident, socialAmount, afterAmount)
+	//税后工资 = 税前工资 - 社保金额 - 减去公积金-减去免征额-专项扣除
+	afterAmount = amountFloat - socialAmount - exemption - deduction
+
+	fmt.Println(pension, medical, unemployment, provident, socialAmount, afterAmount)
 
 	ml, _ := models.GetAllMonthlyInfo(nil, nil, nil, nil, 0, 0)
 	var item models.MonthlyInfo
@@ -98,6 +116,7 @@ func (c *MainController) Calc() {
 			break
 		}
 	}
+
 	//计算纳税额
 	var personalIncomeTax = afterAmount*float64(item.Rate)/nu - float64(item.QuickDeduction)
 
@@ -151,23 +170,23 @@ type CalcResult struct {
 	AfterAmountRate int64
 
 	//养老保险金
-	Pension int64
+	Pension float64
 	//税率
 	Rate int64
 	//医疗保险
 	Medical float64
 
-	PensionRate      int64   //养老比例率
+	PensionRate      float64 //养老比例率
 	MedicalRate      float64 //医疗比例率
 	UnemploymentRate float64 //失业比例率
-	ProvidentRate    int64   //公积金比例率
+	ProvidentRate    float64 //公积金比例率
 
 	//失业保险
 	Unemployment float64
 	// 税前工资
 	Amount string
 	//公积金
-	Provident int64
+	Provident float64
 	//免征额
 	Exemption int64
 	//五险一金
