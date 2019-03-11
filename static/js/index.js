@@ -7,6 +7,12 @@ $(function () {
         initSelect($(this).val());
     });
 
+    $('#select2_group').change(function () {
+        var val = $(this).val();
+        console.log(val);
+
+    });
+
 
     let click = $("#button").click(function (e) {
         const preTaxIncome = $('#preTaxIncome').val();
