@@ -1,6 +1,10 @@
 $(function () {
 
 
+
+
+
+
     $('#preTaxIncome').bind('input propertychange', function () {
 
         const cityCode = $('#select2_group').val();
@@ -13,6 +17,13 @@ $(function () {
         console.log(cityCode);
         initSelect(preTaxIncome, cityCode);
     });
+    load();
+
+    function load(){
+        const cityCode = $('#select2_group').val();
+        var preTaxIncome = $('#preTaxIncome').val();
+        initSelect(preTaxIncome, cityCode);
+    }
 
 
     let click = $("#button").click(function (e) {
