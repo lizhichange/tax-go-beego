@@ -3,14 +3,15 @@ $(function () {
 
     $('#preTaxIncome').bind('input propertychange', function () {
 
-
-        initSelect($(this).val());
+        const cityCode = $('#select2_group').val();
+        initSelect($(this).val(), cityCode);
     });
 
-    $('#select2_group').change(function () {
-        var val = $(this).val();
-        console.log(val);
-
+    let change = $('#select2_group').change(function () {
+        var cityCode = $(this).val();
+        var preTaxIncome = $('#preTaxIncome').val();
+        console.log(cityCode);
+        initSelect(preTaxIncome, cityCode);
     });
 
 
@@ -77,8 +78,8 @@ $(function () {
         });
     });
 
-    function initSelect(a) {
-        const cityCode = $('#select2_group').val();
+    function initSelect(a, cityCode) {
+
 
         $.ajax({
             type: "get",
