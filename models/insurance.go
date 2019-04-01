@@ -20,10 +20,13 @@ type Insurance struct {
 	CityDesc     string
 
 	PensionUpper float64 //养老上限
+
 	PensionLower float64 //养老下限
 
 	ProvidentUpper float64 //公积金比例上限
 	ProvidentLower float64 //公积金比例下限
+
+	Year int64
 }
 
 func (i *Insurance) TableName() string {
@@ -34,11 +37,14 @@ func init() {
 	orm.RegisterModel(new(Insurance))
 }
 
-func GetInsuranceByCode(provinceCode string, cityCode string) (i []Insurance, err error) {
+func GetInsuranceByCode(provinceCode string, cityCode string, year interface{}) (i []Insurance, err error) {
 	var o = orm.NewOrm()
-	num, err := o.Raw("SELECT  * "+
-		"FROM insurance_info WHERE province_code =? and city_code=?  ",
-		provinceCode, cityCode).QueryRows(&i)
+	var sql = "SELECT  * FROM insurance_info WHERE province_code =? and city_code=?  "
+
+	if year != nil {
+		sql = sql + "  and year =? "
+	}
+	num, err := o.Raw(sql, provinceCode, cityCode, year).QueryRows(&i)
 	if err == nil && num > 0 {
 
 	}

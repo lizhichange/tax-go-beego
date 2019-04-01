@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"tax-go-beego/controllers/param"
 	"tax-go-beego/models"
+	"time"
 )
 
 type MainController struct {
@@ -16,10 +17,11 @@ type MainController struct {
 
 func (c *MainController) GetInsuranceByCode() {
 
+	year := time.Now().Year()
 	cityCode := c.Ctx.Input.Param(":cityCode")
 	cs, _ := models.GetCityByCityCode(cityCode)
 	city := cs[0]
-	i, _ := models.GetInsuranceByCode(city.ProvinceCode, cityCode)
+	i, _ := models.GetInsuranceByCode(city.ProvinceCode, cityCode, year)
 	c.Data["json"] = i
 	c.ServeJSON()
 }
@@ -76,7 +78,9 @@ func (c *MainController) Calc() {
 	//税前金额
 	var amount = ob.PreTaxIncome
 	//获取城市社保金额比例配置信息
-	i, _ := models.GetInsuranceByCode(provinceCode, ob.CityCode)
+	year := time.Now().Year()
+
+	i, _ := models.GetInsuranceByCode(provinceCode, ob.CityCode, year)
 	in := i[0]
 	var afterAmount float64
 
