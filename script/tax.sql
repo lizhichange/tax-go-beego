@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 腾讯云
- Source Server Type    : MariaDB
- Source Server Version : 50560
- Source Host           : 193.112.133.54:3306
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 100309
+ Source Host           : localhost:3306
  Source Schema         : tax
 
- Target Server Type    : MariaDB
- Target Server Version : 50560
+ Target Server Type    : MySQL
+ Target Server Version : 100309
  File Encoding         : 65001
 
- Date: 11/03/2019 11:22:34
+ Date: 01/04/2019 13:55:16
 */
 
 SET NAMES utf8mb4;
@@ -34,75 +34,77 @@ CREATE TABLE `insurance_info`  (
   `pension_lower` double(11, 2) NULL DEFAULT NULL COMMENT '社保下限',
   `provident_upper` double(11, 2) NULL DEFAULT NULL COMMENT '公积金上限',
   `provident_lower` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '公积金下限',
+  `year` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1003 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of insurance_info
 -- ----------------------------
-INSERT INTO `insurance_info` VALUES (2, '110100', '北京市', '110000', 8.00, 2.00, 0.20, 12.00, 25401.00, 5080.00, 25401.00, '2273');
-INSERT INTO `insurance_info` VALUES (4, '120100', '天津市', '120000', 8.00, 2.00, 0.50, 11.00, 16821.00, 3364.00, 24240.00, '2050');
-INSERT INTO `insurance_info` VALUES (5, '130100', '石家庄市', '130000', 8.00, 2.00, 0.30, 10.00, 14246.75, 2849.35, 16539.00, '3308');
-INSERT INTO `insurance_info` VALUES (6, '140100', '太原市', '140000', 8.00, 2.00, 0.30, 6.00, 13744.00, 3024.00, 16206.00, '1625');
-INSERT INTO `insurance_info` VALUES (7, '150100', '呼和浩特市', '150000', 8.00, 2.00, 0.50, 6.00, 14052.00, 2810.65, 15498.00, '1760');
-INSERT INTO `insurance_info` VALUES (9, '210100', '沈阳市', '210000', 8.00, 2.00, 0.50, 12.00, 18545.00, 3373.00, 18545.00, '1620');
-INSERT INTO `insurance_info` VALUES (10, '210200', '大连市', '210000', 8.00, 2.00, 0.50, 15.00, 18441.00, 3688.00, 30735.00, '1530');
-INSERT INTO `insurance_info` VALUES (11, '220100', '长春市', '220000', 8.00, 2.00, 0.30, 7.00, 18410.00, 3682.00, 21485.00, '2000');
-INSERT INTO `insurance_info` VALUES (12, '230100', '哈尔滨市', '230000', 8.00, 2.00, 0.50, 8.00, 15645.75, 3129.15, 14601.00, '1680');
-INSERT INTO `insurance_info` VALUES (13, '310100', '上海市', '310000', 8.00, 2.00, 0.50, 7.00, 21396.00, 4279.00, 21400.00, '2300');
-INSERT INTO `insurance_info` VALUES (14, '320100', '南京市', '320000', 8.00, 2.00, 0.50, 8.00, 19935.00, 3030.00, 25300.00, '2020');
-INSERT INTO `insurance_info` VALUES (26, '330100', '杭州市', '330000', 8.00, 2.00, 0.50, 12.00, 15274.74, 3054.95, 24311.00, '2010');
-INSERT INTO `insurance_info` VALUES (27, '330200', '宁波市', '330000', 8.00, 2.00, 0.50, 8.00, 15335.00, 3068.00, 22220.00, '2010');
-INSERT INTO `insurance_info` VALUES (34, '340100', '合肥市', '340000', 8.00, 2.00, 0.50, 8.00, 15321.00, 3065.00, 18713.00, '1520');
-INSERT INTO `insurance_info` VALUES (35, '350100', '福州市', '350000', 8.00, 2.00, 0.50, 12.00, 16907.00, 1800.00, 16908.00, '1650');
-INSERT INTO `insurance_info` VALUES (36, '350200', '厦门市', '350000', 8.00, 2.00, 0.50, 12.00, 17304.00, 1700.00, 18841.00, '1500');
-INSERT INTO `insurance_info` VALUES (38, '360100', '南昌市', '360000', 8.00, 2.00, 0.50, 12.00, 14331.00, 2867.00, 14433.00, '1083');
-INSERT INTO `insurance_info` VALUES (39, '370100', '济南市', '370000', 8.00, 2.00, 0.30, 7.00, 15999.00, 3200.00, 15999.00, '1810');
-INSERT INTO `insurance_info` VALUES (40, '370200', '青岛市', '370000', 8.00, 2.00, 0.30, 5.00, 14730.00, 2946.00, 24548.75, '1664.17');
-INSERT INTO `insurance_info` VALUES (42, '410100', '郑州市', '410000', 8.00, 2.00, 0.30, 10.00, 15287.25, 3057.45, 15287.00, '3057');
-INSERT INTO `insurance_info` VALUES (44, '420100', '武汉市', '420000', 8.00, 2.00, 0.30, 8.00, 19920.90, 3399.60, 29881.25, '1750');
-INSERT INTO `insurance_info` VALUES (45, '430100', '长沙市', '430000', 8.00, 2.00, 0.30, 8.00, 13473.00, 2695.00, 29175.00, '1390');
-INSERT INTO `insurance_info` VALUES (46, '440100', '广州市', '440000', 8.00, 2.00, 0.20, 5.00, 24654.00, 2100.00, 24654.00, '2100');
-INSERT INTO `insurance_info` VALUES (47, '440300', '深圳市', '440000', 8.00, 2.00, 0.50, 5.00, 25044.00, 2200.00, 25044.00, '2130');
-INSERT INTO `insurance_info` VALUES (48, '440400', '珠海市', '440000', 8.00, 2.00, 0.20, 5.00, 18213.00, 1650.00, 18732.00, '1650');
-INSERT INTO `insurance_info` VALUES (50, '440600', '佛山市', '440000', 8.00, 0.00, 0.50, 12.00, 16797.00, 2906.00, 83930.00, '1510');
-INSERT INTO `insurance_info` VALUES (54, '441900', '东莞市', '440000', 8.00, 2.00, 0.20, 5.00, 14412.00, 2906.00, 27391.00, '1520');
-INSERT INTO `insurance_info` VALUES (57, '450100', '南宁市', '450000', 8.00, 2.00, 0.50, 12.00, 14171.40, 2834.30, 17140.00, '1400');
-INSERT INTO `insurance_info` VALUES (58, '460100', '海口市', '460000', 8.00, 2.00, 0.50, 10.00, 15642.00, 3128.40, 15508.00, '1430');
-INSERT INTO `insurance_info` VALUES (59, '500100', '重庆市', '500000', 8.00, 2.00, 0.50, 7.00, 18318.00, 3664.00, 18318.00, '1500');
-INSERT INTO `insurance_info` VALUES (60, '510100', '成都市', '510000', 8.00, 2.00, 0.40, 6.00, 15333.00, 3067.00, 20972.00, '1500');
-INSERT INTO `insurance_info` VALUES (61, '520100', '贵阳市', '520000', 8.00, 2.00, 0.30, 6.00, 15034.75, 2004.63, 42783.00, '1400');
-INSERT INTO `insurance_info` VALUES (62, '530100', '昆明市', '530000', 8.00, 2.00, 0.30, 10.00, 15891.00, 3178.00, 15507.00, '1570');
-INSERT INTO `insurance_info` VALUES (64, '610100', '西安市', '610000', 8.00, 2.00, 0.30, 5.00, 19443.00, 3889.00, 19443.00, '1680');
-INSERT INTO `insurance_info` VALUES (65, '620100', '兰州市', '620000', 8.00, 2.00, 0.30, 7.00, 14887.00, 2978.00, 16752.00, '1620');
-INSERT INTO `insurance_info` VALUES (66, '630100', '西宁市', '630000', 8.00, 2.00, 0.50, 6.00, 16863.00, 3373.00, 16863.00, '3373');
-INSERT INTO `insurance_info` VALUES (67, '640100', '银川市', '640000', 8.00, 2.00, 0.50, 12.00, 16957.00, 3125.00, 17025.00, '1480');
-INSERT INTO `insurance_info` VALUES (68, '650100', '乌鲁木齐市', '650000', 8.00, 2.00, 0.50, 10.00, 14220.00, 2844.00, 14352.00, '1470');
-INSERT INTO `insurance_info` VALUES (100, '150200', '包头市', '150000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (222, '320300', '徐州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (223, '320400', '常州市', '320000', 8.00, 2.00, 0.50, 10.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (224, '320500', '苏州市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (225, '320600', '南通市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (227, '320800', '淮安市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (228, '320900', '盐城市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (229, '321000', '扬州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (230, '321100', '镇江市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (266, '320700', '连云港市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (300, '321200', '泰州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (301, '330300', '温州市', '330000', 8.00, 2.00, 0.50, 5.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (302, '330400', '嘉兴市', '330000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (303, '330500', '湖州市', '330000', 8.00, 1.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (304, '330600', '绍兴市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (305, '330700', '金华市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (306, '331000', '台州市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (308, '350500', '泉州市', '350000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (400, '440500', '汕头市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (401, '440700', '江门市', '440000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (402, '441300', '惠州市', '440000', 8.00, 2.00, 0.50, 5.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (403, '441500', '汕尾市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (500, '442000', '中山市', '440000', 8.00, 0.00, 0.20, 5.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (501, '445100', '潮州市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL);
-INSERT INTO `insurance_info` VALUES (1001, '320200', '无锡市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL);
+INSERT INTO `insurance_info` VALUES (2, '110100', '北京市', '110000', 8.00, 2.00, 0.20, 12.00, 25401.00, 5080.00, 25401.00, '2273', 2019);
+INSERT INTO `insurance_info` VALUES (4, '120100', '天津市', '120000', 8.00, 2.00, 0.50, 11.00, 16821.00, 3364.00, 24240.00, '2050', 2019);
+INSERT INTO `insurance_info` VALUES (5, '130100', '石家庄市', '130000', 8.00, 2.00, 0.30, 10.00, 14246.75, 2849.35, 16539.00, '3308', 2019);
+INSERT INTO `insurance_info` VALUES (6, '140100', '太原市', '140000', 8.00, 2.00, 0.30, 6.00, 13744.00, 3024.00, 16206.00, '1625', 2019);
+INSERT INTO `insurance_info` VALUES (7, '150100', '呼和浩特市', '150000', 8.00, 2.00, 0.50, 6.00, 14052.00, 2810.65, 15498.00, '1760', 2019);
+INSERT INTO `insurance_info` VALUES (9, '210100', '沈阳市', '210000', 8.00, 2.00, 0.50, 12.00, 18545.00, 3373.00, 18545.00, '1620', 2019);
+INSERT INTO `insurance_info` VALUES (10, '210200', '大连市', '210000', 8.00, 2.00, 0.50, 15.00, 18441.00, 3688.00, 30735.00, '1530', 2019);
+INSERT INTO `insurance_info` VALUES (11, '220100', '长春市', '220000', 8.00, 2.00, 0.30, 7.00, 18410.00, 3682.00, 21485.00, '2000', 2019);
+INSERT INTO `insurance_info` VALUES (12, '230100', '哈尔滨市', '230000', 8.00, 2.00, 0.50, 8.00, 15645.75, 3129.15, 14601.00, '1680', 2019);
+INSERT INTO `insurance_info` VALUES (13, '310100', '上海市', '310000', 8.00, 2.00, 0.50, 7.00, 21396.00, 4279.00, 21400.00, '2300', 2018);
+INSERT INTO `insurance_info` VALUES (14, '320100', '南京市', '320000', 8.00, 2.00, 0.50, 8.00, 19935.00, 3030.00, 25300.00, '2020', 2019);
+INSERT INTO `insurance_info` VALUES (26, '330100', '杭州市', '330000', 8.00, 2.00, 0.50, 12.00, 15274.74, 3054.95, 24311.00, '2010', 2019);
+INSERT INTO `insurance_info` VALUES (27, '330200', '宁波市', '330000', 8.00, 2.00, 0.50, 8.00, 15335.00, 3068.00, 22220.00, '2010', 2019);
+INSERT INTO `insurance_info` VALUES (34, '340100', '合肥市', '340000', 8.00, 2.00, 0.50, 8.00, 15321.00, 3065.00, 18713.00, '1520', 2019);
+INSERT INTO `insurance_info` VALUES (35, '350100', '福州市', '350000', 8.00, 2.00, 0.50, 12.00, 16907.00, 1800.00, 16908.00, '1650', 2019);
+INSERT INTO `insurance_info` VALUES (36, '350200', '厦门市', '350000', 8.00, 2.00, 0.50, 12.00, 17304.00, 1700.00, 18841.00, '1500', 2019);
+INSERT INTO `insurance_info` VALUES (38, '360100', '南昌市', '360000', 8.00, 2.00, 0.50, 12.00, 14331.00, 2867.00, 14433.00, '1083', 2019);
+INSERT INTO `insurance_info` VALUES (39, '370100', '济南市', '370000', 8.00, 2.00, 0.30, 7.00, 15999.00, 3200.00, 15999.00, '1810', 2019);
+INSERT INTO `insurance_info` VALUES (40, '370200', '青岛市', '370000', 8.00, 2.00, 0.30, 5.00, 14730.00, 2946.00, 24548.75, '1664.17', 2019);
+INSERT INTO `insurance_info` VALUES (42, '410100', '郑州市', '410000', 8.00, 2.00, 0.30, 10.00, 15287.25, 3057.45, 15287.00, '3057', 2019);
+INSERT INTO `insurance_info` VALUES (44, '420100', '武汉市', '420000', 8.00, 2.00, 0.30, 8.00, 19920.90, 3399.60, 29881.25, '1750', 2019);
+INSERT INTO `insurance_info` VALUES (45, '430100', '长沙市', '430000', 8.00, 2.00, 0.30, 8.00, 13473.00, 2695.00, 29175.00, '1390', 2019);
+INSERT INTO `insurance_info` VALUES (46, '440100', '广州市', '440000', 8.00, 2.00, 0.20, 5.00, 24654.00, 2100.00, 24654.00, '2100', 2019);
+INSERT INTO `insurance_info` VALUES (47, '440300', '深圳市', '440000', 8.00, 2.00, 0.50, 5.00, 25044.00, 2200.00, 25044.00, '2130', 2019);
+INSERT INTO `insurance_info` VALUES (48, '440400', '珠海市', '440000', 8.00, 2.00, 0.20, 5.00, 18213.00, 1650.00, 18732.00, '1650', 2019);
+INSERT INTO `insurance_info` VALUES (50, '440600', '佛山市', '440000', 8.00, 0.00, 0.50, 12.00, 16797.00, 2906.00, 83930.00, '1510', 2019);
+INSERT INTO `insurance_info` VALUES (54, '441900', '东莞市', '440000', 8.00, 2.00, 0.20, 5.00, 14412.00, 2906.00, 27391.00, '1520', 2019);
+INSERT INTO `insurance_info` VALUES (57, '450100', '南宁市', '450000', 8.00, 2.00, 0.50, 12.00, 14171.40, 2834.30, 17140.00, '1400', 2019);
+INSERT INTO `insurance_info` VALUES (58, '460100', '海口市', '460000', 8.00, 2.00, 0.50, 10.00, 15642.00, 3128.40, 15508.00, '1430', 2019);
+INSERT INTO `insurance_info` VALUES (59, '500100', '重庆市', '500000', 8.00, 2.00, 0.50, 7.00, 18318.00, 3664.00, 18318.00, '1500', 2019);
+INSERT INTO `insurance_info` VALUES (60, '510100', '成都市', '510000', 8.00, 2.00, 0.40, 6.00, 15333.00, 3067.00, 20972.00, '1500', 2019);
+INSERT INTO `insurance_info` VALUES (61, '520100', '贵阳市', '520000', 8.00, 2.00, 0.30, 6.00, 15034.75, 2004.63, 42783.00, '1400', 2019);
+INSERT INTO `insurance_info` VALUES (62, '530100', '昆明市', '530000', 8.00, 2.00, 0.30, 10.00, 15891.00, 3178.00, 15507.00, '1570', 2019);
+INSERT INTO `insurance_info` VALUES (64, '610100', '西安市', '610000', 8.00, 2.00, 0.30, 5.00, 19443.00, 3889.00, 19443.00, '1680', 2019);
+INSERT INTO `insurance_info` VALUES (65, '620100', '兰州市', '620000', 8.00, 2.00, 0.30, 7.00, 14887.00, 2978.00, 16752.00, '1620', 2019);
+INSERT INTO `insurance_info` VALUES (66, '630100', '西宁市', '630000', 8.00, 2.00, 0.50, 6.00, 16863.00, 3373.00, 16863.00, '3373', 2019);
+INSERT INTO `insurance_info` VALUES (67, '640100', '银川市', '640000', 8.00, 2.00, 0.50, 12.00, 16957.00, 3125.00, 17025.00, '1480', 2019);
+INSERT INTO `insurance_info` VALUES (68, '650100', '乌鲁木齐市', '650000', 8.00, 2.00, 0.50, 10.00, 14220.00, 2844.00, 14352.00, '1470', 2019);
+INSERT INTO `insurance_info` VALUES (100, '150200', '包头市', '150000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (222, '320300', '徐州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (223, '320400', '常州市', '320000', 8.00, 2.00, 0.50, 10.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (224, '320500', '苏州市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (225, '320600', '南通市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (227, '320800', '淮安市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (228, '320900', '盐城市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (229, '321000', '扬州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (230, '321100', '镇江市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (266, '320700', '连云港市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (300, '321200', '泰州市', '320000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (301, '330300', '温州市', '330000', 8.00, 2.00, 0.50, 5.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (302, '330400', '嘉兴市', '330000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (303, '330500', '湖州市', '330000', 8.00, 1.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (304, '330600', '绍兴市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (305, '330700', '金华市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (306, '331000', '台州市', '330000', 8.00, 0.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (308, '350500', '泉州市', '350000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (400, '440500', '汕头市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (401, '440700', '江门市', '440000', 8.00, 2.00, 0.50, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (402, '441300', '惠州市', '440000', 8.00, 2.00, 0.50, 5.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (403, '441500', '汕尾市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (500, '442000', '中山市', '440000', 8.00, 0.00, 0.20, 5.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (501, '445100', '潮州市', '440000', 8.00, 2.00, 0.20, 12.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (1001, '320200', '无锡市', '320000', 8.00, 2.00, 0.50, 8.00, NULL, NULL, NULL, NULL, 2019);
+INSERT INTO `insurance_info` VALUES (1002, '310100', '上海市', '310000', 8.00, 2.00, 0.50, 7.00, 23496.00, 4699.00, 21400.00, '2300', 2019);
 
 -- ----------------------------
 -- Table structure for monthly_info
@@ -116,7 +118,7 @@ CREATE TABLE `monthly_info`  (
   `monthly` int(255) NULL DEFAULT NULL COMMENT '起征额度',
   `range` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of monthly_info
@@ -140,7 +142,7 @@ CREATE TABLE `pos_area`  (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `city_code` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3342 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3342 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pos_area
@@ -3498,7 +3500,7 @@ CREATE TABLE `pos_city`  (
   `province_code` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `hot` tinyint(1) NOT NULL COMMENT '是否热门',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 390 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 390 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pos_city
@@ -3903,7 +3905,7 @@ CREATE TABLE `pos_province`  (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `hot` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pos_province
