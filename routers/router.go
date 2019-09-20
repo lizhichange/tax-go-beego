@@ -13,6 +13,9 @@ func init() {
 
 	beego.Router("/getInsuranceByCode/:cityCode", &controllers.MainController{}, "get:GetInsuranceByCode")
 
+
+	beego.Router("/video", &controllers.VideoController{})
+
 	controllers.InitProvince()
 	controllers.InitCityController()
 }
