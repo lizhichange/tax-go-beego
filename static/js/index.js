@@ -90,13 +90,16 @@ $(function () {
     });
 
     function initSelect(a, cityCode) {
-
-
+        console.log(cityCode);
         $.ajax({
             type: "get",
             url: "getInsuranceByCode/" + cityCode,
             dataType: "json",
             success: function (data) {
+                console.log(data);
+                if (!data){
+                    return;
+                }
                 let datum = data[0];
                 console.log(datum.PensionUpper);
                 //如果输入的值大于等于 社保上限

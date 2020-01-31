@@ -1256,13 +1256,13 @@ function init_parsley() {
         validateFront();
     });
     var validateFront = function () {
-        if (true === $('#demo-form').parsley().isValid()) {
-            $('.bs-callout-info').removeClass('hidden');
-            $('.bs-callout-warning').addClass('hidden');
-        } else {
-            $('.bs-callout-info').addClass('hidden');
-            $('.bs-callout-warning').removeClass('hidden');
-        }
+        // if (true === $('#demo-form').parsley().isValid()) {
+        //     $('.bs-callout-info').removeClass('hidden');
+        //     $('.bs-callout-warning').addClass('hidden');
+        // } else {
+        //     $('.bs-callout-info').addClass('hidden');
+        //     $('.bs-callout-warning').removeClass('hidden');
+        // }
     };
 
     $/*.listen*/('parsley:field:validate', function () {
@@ -1273,13 +1273,13 @@ function init_parsley() {
         validateFront();
     });
     var validateFront = function () {
-        if (true === $('#demo-form2').parsley().isValid()) {
-            $('.bs-callout-info').removeClass('hidden');
-            $('.bs-callout-warning').addClass('hidden');
-        } else {
-            $('.bs-callout-info').addClass('hidden');
-            $('.bs-callout-warning').removeClass('hidden');
-        }
+        // if (true === $('#demo-form2').parsley().isValid()) {
+        //     $('.bs-callout-info').removeClass('hidden');
+        //     $('.bs-callout-warning').addClass('hidden');
+        // } else {
+        //     $('.bs-callout-info').addClass('hidden');
+        //     $('.bs-callout-warning').removeClass('hidden');
+        // }
     };
 
     try {
