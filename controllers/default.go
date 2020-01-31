@@ -20,9 +20,13 @@ func (c *MainController) GetInsuranceByCode() {
 	year := time.Now().Year()
 	cityCode := c.Ctx.Input.Param(":cityCode")
 	cs, _ := models.GetCityByCityCode(cityCode)
-	city := cs[0]
-	i, _ := models.GetInsuranceByCode(city.ProvinceCode, cityCode, year)
-	c.Data["json"] = i
+	if cs!=nil {
+		city := cs[0]
+		i, _ := models.GetInsuranceByCode(city.ProvinceCode, cityCode, year)
+		c.Data["json"] = i
+	}else{
+		c.Data["json"] = nil
+	}
 	c.ServeJSON()
 }
 

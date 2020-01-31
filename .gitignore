@@ -4,6 +4,8 @@
 # Log file
 *.log
 
+tax-go-beego
+
 # BlueJ files
 *.ctxt
 
