@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"fmt"
+	"log"
 	"reflect"
 	"strings"
 
@@ -37,17 +38,27 @@ func init() {
 	orm.RegisterModel(new(Insurance))
 }
 
+func GetInsuranceByYear(year interface{}) (i []Insurance, err error) {
+	var o = orm.NewOrm()
+	var sql = "SELECT  * FROM insurance_info WHERE 1=1" +
+		"  and year =?"
+	log.Println("sql=", sql)
+	num, err := o.Raw(sql, year).QueryRows(&i)
+	log.Println(num, err)
+	return i, nil
+
+
+}
 func GetInsuranceByCode(provinceCode string, cityCode string, year interface{}) (i []Insurance, err error) {
 	var o = orm.NewOrm()
-	var sql = "SELECT  * FROM insurance_info WHERE province_code =? and city_code=?  "
+	var sql = "SELECT  * FROM insurance_info WHERE 1=1" +
+		"  and province_code =?" +
+		"  and city_code =? " +
+		"  and year =?"
 
-	if year != nil {
-		sql = sql + "  and year =? "
-	}
+	log.Println("sql=", sql)
 	num, err := o.Raw(sql, provinceCode, cityCode, year).QueryRows(&i)
-	if err == nil && num > 0 {
-
-	}
+	log.Println(num, err)
 	return i, nil
 }
 
@@ -55,6 +66,7 @@ func GetInsuranceByCode(provinceCode string, cityCode string, year interface{}) 
 // last inserted Id on success.
 func AddInsurance(m *Insurance) (id int64, err error) {
 	o := orm.NewOrm()
+	log.Println(m)
 	id, err = o.Insert(m)
 	return
 }

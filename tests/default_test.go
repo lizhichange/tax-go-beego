@@ -3,7 +3,6 @@ package test
 import (
 	"github.com/astaxie/beego"
 	. "github.com/smartystreets/goconvey/convey"
-	_ "mygomvcproject/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
